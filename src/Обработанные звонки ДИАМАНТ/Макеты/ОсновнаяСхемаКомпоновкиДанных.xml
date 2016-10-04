@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗначениеПараметра</dataPath>
+				<field>ЗначениеПараметра</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Оператор</dataPath>
+				<field>Оператор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПараметрСеанса</dataPath>
+				<field>ПараметрСеанса</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПланОбзвона</dataPath>
+				<field>ПланОбзвона</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сеанс</dataPath>
+				<field>Сеанс</field>
+				<presentationExpression>Сеанс.Номер</presentationExpression>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗначПараметра</dataPath>
+				<field>ЗначПараметра</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Дата</dataPath>
+				<field>Дата</field>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ДФ=dd.MM.yyyy</value>
+					</item>
+				</appearance>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	КЦСеансДиалога.ПланОбзвона КАК ПланОбзвона,
+	КЦПланОбзвонаПараметрыОпроса.НомерСтроки КАК Порядок,
+	КЦСеансДиалогаИтоговыеЗначения.Параметр КАК ПараметрСеанса,
+	КЦСеансДиалогаИтоговыеЗначения.Значение КАК ЗначениеПараметра,
+	КЦСеансДиалогаИтоговыеЗначения.Значение КАК ЗначПараметра,
+//	КЦСеансДиалога.Оператор,
+	КЦСеансДиалога.Ссылка КАК Сеанс,
+	КЦСеансДиалога.Дата
+ИЗ
+	Документ.КЦСеансДиалога КАК КЦСеансДиалога
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.КЦСеансДиалога.ИтоговыеЗначения КАК КЦСеансДиалогаПараметрФиксацияДиамант
+		ПО (КЦСеансДиалогаПараметрФиксацияДиамант.Ссылка = КЦСеансДиалога.Ссылка)
+			И (КЦСеансДиалогаПараметрФиксацияДиамант.Параметр = &amp;ПараметрДиамант)
+			И (КЦСеансДиалогаПараметрФиксацияДиамант.Значение = ИСТИНА)
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.КЦСеансДиалога.ИтоговыеЗначения КАК КЦСеансДиалогаИтоговыеЗначения
+			ЛЕВОЕ СОЕДИНЕНИЕ Документ.КЦПланОбзвона.ПараметрыОпроса КАК КЦПланОбзвонаПараметрыОпроса
+			ПО КЦСеансДиалогаИтоговыеЗначения.Параметр = КЦПланОбзвонаПараметрыОпроса.Параметр
+				И (КЦПланОбзвонаПараметрыОпроса.Отчет = ИСТИНА)
+				И (КЦПланОбзвонаПараметрыОпроса.Ссылка = &amp;ПланОбзвона)
+		ПО (КЦСеансДиалогаИтоговыеЗначения.Ссылка = КЦСеансДиалога.Ссылка)
+ГДЕ
+	КЦСеансДиалога.ДатаОкончания МЕЖДУ &amp;ДатаНач И &amp;ДатаКон
+	И НЕ КЦСеансДиалога.Тестовый
+	И НЕ КЦСеансДиалога.ПометкаУдаления
+
+УПОРЯДОЧИТЬ ПО
+	ПланОбзвона,
+	Порядок</query>
+		</dataSet>
+		<totalField>
+			<dataPath>ЗначениеПараметра</dataPath>
+			<expression>Максимум(ЗначениеПараметра)</expression>
+		</totalField>
+		<parameter>
+			<name>ДатаНач</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>За период с</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ДатаКон</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>по</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ПланОбзвона</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>План обзвона</d4p1:content>
+				</d4p1:item>
+			</title>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ПараметрДиамант</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Параметр диамант</d4p1:content>
+				</d4p1:item>
+			</title>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДатаНач</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardBeginningDate">
+				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisMonth</v8:variant>
+			</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДатаКон</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardBeginningDate">
+				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfNextDay</v8:variant>
+			</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПланОбзвона</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<userSettingID>a7f32459-363e-4058-b202-40e537986f96</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПараметрДиамант</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<userSettingID>d4f25057-a755-450d-8696-6701aa4501f5</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Дата</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionAttributesPlacement">Separately</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemTable">
+		<column>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Порядок</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>ПараметрСеанса</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Порядок</left>
+					<comparisonType>Filled</comparisonType>
+				</item>
+			</filter>
+			<order>
+				<item xsi:type="OrderItemField">
+					<field>Порядок</field>
+					<orderType>Asc</orderType>
+				</item>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</column>
+		<row>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Оператор</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>Сеанс</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</row>
+		<selection>
+			<item xsi:type="SelectedItemField">
+				<field>ЗначениеПараметра</field>
+			</item>
+		</selection>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
