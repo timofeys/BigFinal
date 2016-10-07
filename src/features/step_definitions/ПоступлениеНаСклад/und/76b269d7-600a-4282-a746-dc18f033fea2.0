@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<V8Exch:_1CV8DtUD xmlns:V8Exch="http://www.1c.ru/V8/1CV8DtUD/" xmlns:core="http://v8.1c.ru/data" xmlns:v8="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<V8Exch:Data>
+		<v8:CatalogObject.НоменклаторМатериалов>
+			<v8:IsFolder>true</v8:IsFolder>
+			<v8:Ref xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64064-15cb-11e6-878a-50465db4fe4a</v8:Ref>
+			<v8:DeletionMark>false</v8:DeletionMark>
+			<v8:Parent xsi:type="v8:CatalogRef.НоменклаторМатериалов">00000000-0000-0000-0000-000000000000</v8:Parent>
+			<v8:Code>000000007</v8:Code>
+			<v8:Description>Асбестовый шнур</v8:Description>
+		</v8:CatalogObject.НоменклаторМатериалов>
+		<v8:CatalogObject.НоменклаторМатериалов>
+			<v8:IsFolder>false</v8:IsFolder>
+			<v8:Ref xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64065-15cb-11e6-878a-50465db4fe4a</v8:Ref>
+			<v8:DeletionMark>false</v8:DeletionMark>
+			<v8:Parent xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64064-15cb-11e6-878a-50465db4fe4a</v8:Parent>
+			<v8:Code>000000008</v8:Code>
+			<v8:Description>Асбестовый шнур 10 мм</v8:Description>
+			<v8:ВнутреннийКодификторНаСкладе>шнур</v8:ВнутреннийКодификторНаСкладе>
+			<v8:Описание/>
+			<v8:Спецификация/>
+			<v8:ЕдиницаИзмерения xsi:type="v8:CatalogRef.ЕдиницыИзмерения">00000000-0000-0000-0000-000000000000</v8:ЕдиницаИзмерения>
+		</v8:CatalogObject.НоменклаторМатериалов>
+		<v8:CatalogObject.НоменклаторМатериалов>
+			<v8:IsFolder>true</v8:IsFolder>
+			<v8:Ref xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64063-15cb-11e6-878a-50465db4fe4a</v8:Ref>
+			<v8:DeletionMark>false</v8:DeletionMark>
+			<v8:Parent xsi:type="v8:CatalogRef.НоменклаторМатериалов">00000000-0000-0000-0000-000000000000</v8:Parent>
+			<v8:Code>000000004</v8:Code>
+			<v8:Description>Проволка</v8:Description>
+		</v8:CatalogObject.НоменклаторМатериалов>
+		<v8:CatalogObject.НоменклаторМатериалов>
+			<v8:IsFolder>false</v8:IsFolder>
+			<v8:Ref xsi:type="v8:CatalogRef.НоменклаторМатериалов">6ce73717-15cb-11e6-878a-50465db4fe4a</v8:Ref>
+			<v8:DeletionMark>false</v8:DeletionMark>
+			<v8:Parent xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64063-15cb-11e6-878a-50465db4fe4a</v8:Parent>
+			<v8:Code>000000002</v8:Code>
+			<v8:Description>Cвинцовая проволока 4,5 </v8:Description>
+			<v8:ВнутреннийКодификторНаСкладе>проволка 4</v8:ВнутреннийКодификторНаСкладе>
+			<v8:Описание/>
+			<v8:Спецификация/>
+			<v8:ЕдиницаИзмерения xsi:type="v8:CatalogRef.ЕдиницыИзмерения">00000000-0000-0000-0000-000000000000</v8:ЕдиницаИзмерения>
+		</v8:CatalogObject.НоменклаторМатериалов>
+		<v8:CatalogObject.НоменклаторМатериалов>
+			<v8:IsFolder>false</v8:IsFolder>
+			<v8:Ref xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64066-15cb-11e6-878a-50465db4fe4a</v8:Ref>
+			<v8:DeletionMark>false</v8:DeletionMark>
+			<v8:Parent xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64064-15cb-11e6-878a-50465db4fe4a</v8:Parent>
+			<v8:Code>000000009</v8:Code>
+			<v8:Description>Асбестовый шнур 15 мм</v8:Description>
+			<v8:ВнутреннийКодификторНаСкладе>шнур</v8:ВнутреннийКодификторНаСкладе>
+			<v8:Описание/>
+			<v8:Спецификация/>
+			<v8:ЕдиницаИзмерения xsi:type="v8:CatalogRef.ЕдиницыИзмерения">00000000-0000-0000-0000-000000000000</v8:ЕдиницаИзмерения>
+		</v8:CatalogObject.НоменклаторМатериалов>
+		<v8:CatalogObject.НоменклаторМатериалов>
+			<v8:IsFolder>false</v8:IsFolder>
+			<v8:Ref xsi:type="v8:CatalogRef.НоменклаторМатериалов">6ce73716-15cb-11e6-878a-50465db4fe4a</v8:Ref>
+			<v8:DeletionMark>false</v8:DeletionMark>
+			<v8:Parent xsi:type="v8:CatalogRef.НоменклаторМатериалов">bce64063-15cb-11e6-878a-50465db4fe4a</v8:Parent>
+			<v8:Code>000000001</v8:Code>
+			<v8:Description>Cвинцовая проволока 5 мм</v8:Description>
+			<v8:ВнутреннийКодификторНаСкладе>проволка 5</v8:ВнутреннийКодификторНаСкладе>
+			<v8:Описание/>
+			<v8:Спецификация/>
+			<v8:ЕдиницаИзмерения xsi:type="v8:CatalogRef.ЕдиницыИзмерения">00000000-0000-0000-0000-000000000000</v8:ЕдиницаИзмерения>
+		</v8:CatalogObject.НоменклаторМатериалов>
+	</V8Exch:Data>
+	<PredefinedData/>
+</V8Exch:_1CV8DtUD>
